@@ -29,3 +29,6 @@ model = AutoModelForCausalLM.from_pretrained(model_name, device_map="cuda", quan
 ## Usage
 ``python server.py``
 <br>Chat at http://127.0.0.1:5000/
+<br>/generate POST
+<br>/memories GET POST
+<br>/stream GET POST
