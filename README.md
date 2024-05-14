@@ -10,11 +10,7 @@ Really basic llm chat interface with long term memory using lancedb
 ```py
 from unsloth import FastLanguageModel
 ...
-model, tokenizer = FastLanguageModel.from_pretrained(
-  model_name=model_name,
-  load_in_4bit=True,
-  device_map="cuda"
-)
+model, tokenizer = FastLanguageModel.from_pretrained(model_name=model_name, load_in_4bit=True, device_map="cuda")
 FastLanguageModel.for_inference(model)
 ```
 with
@@ -23,7 +19,7 @@ from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
 ...
 bnbconfig = BitsAndBytesConfig(load_in_4bit=True)
 tokenizer = AutoTokenizer.from_pretrained(model_name)
-model = AutoModelForCausalLM.from_pretrained(model_name, device_map="cuda", quantization_config=bnbconfig)
+model = AutoModelForCausalLM.from_pretrained(model_name, quantization_config=bnbconfig, device_map="cuda")
 ```
 
 ## Usage
