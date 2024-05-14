@@ -1,13 +1,15 @@
 $(() => {
+  var converter = new showdown.Converter()
   var status
   var streamingInterval
   var messages = []
   var prevReply = ""
+
   function displayMessages() {
     $("#messages").html("")
     messages.forEach((m) => {
       message = `<div class="message">
-      <p>${m.role}: ${m.content}</p>
+      <p><strong>${m.role == "User" ? "You" : m.role}</strong>: ${converter.makeHtml(m.content)}</p>
       </div>
       `
       $("#messages").append(message)
@@ -34,7 +36,9 @@ $(() => {
   }
 
   $("#input").keypress((event) => {
-    if (event.key === "Enter") {
+    if (event.key === "Enter" && event.shiftKey) {
+
+    } else if (event.key === "Enter") {
       event.preventDefault()
       if (status == "generating") {
         return
@@ -61,9 +65,6 @@ $(() => {
           streamingInterval = setInterval(getStream, 100)
         }
       })
-    }
-    if (event.key === "Enter" && event.shiftKey) {
-      $("#input").val($("#input").val() + '\n')
     }
   })
 })
