@@ -2,9 +2,9 @@
 Really basic llm chat interface with long term memory using lancedb
 
 ## Requirements
-[Unsloth](https://github.com/unslothai/unsloth/tree/main?tab=readme-ov-file#-installation-instructions) or *transformers 
-flask
-lancedb
+[Unsloth](https://github.com/unslothai/unsloth/tree/main?tab=readme-ov-file#-installation-instructions) or *transformers
+<br>flask
+<br>lancedb
 
 *You can use transformers instead by replacing this code in model.py
 ```py
@@ -28,4 +28,4 @@ model = AutoModelForCausalLM.from_pretrained(model_name, device_map="cuda", quan
 
 ## Usage
 ``python server.py``
-Chat at http://127.0.0.1:5000/
+<br>Chat at http://127.0.0.1:5000/
