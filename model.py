@@ -22,11 +22,11 @@ messages = [
 ]
 
 MEMORY_FREQUENCY = 5 # the frequency to create a memory summary
-MEMORY_SUMMARY_CONTEXT_MESSAGES = 2 # extra messages to include in the summary prompt for context
+MEMORY_SUMMARY_CONTEXT_MESSAGES = 2 # extra messages (prior to new messages) to include in the summary prompt for context
 MEMORY_RECALL_COUNT = 6 # the number of separate memories to recall
 MEMORY_QUERY_LENGTH = 2 # the max number of pairs of messages to include in the query
 MAX_TOKEN_COUNT = 1600
-SYSTEM = "You are a helpful assistant."
+SYSTEM = "You are an opinionated assistant."
 
 def create_memory_summary():
   temp_messages = [
@@ -45,7 +45,7 @@ def create_memory_summary():
     })
   temp_messages.append({
     "role": "SYSTEM",
-    "content": "Summarise the previous conversation for memory. Don't preface it with 'this is a summary' or add any other context"
+    "content": "Summarise the previous conversation in first person for your memory. Don't preface it with 'this is a summary' or add any unnecessary context"
   })
   print(f"Context for summary:\n{temp_messages}")
   inputs = tokenizer.apply_chat_template(temp_messages, add_generation_prompt=True, return_tensors="pt").to("cuda")
@@ -91,7 +91,7 @@ def generate_reply(message, role):
   })
   if MEMORY_RECALL_COUNT > 0:
     messages[0]['content'] += recall_memories()
-  print(f"Full system context:\n{messages[0]['content']}")
+  print(f"Full system context:\n{messages[0]['content']}\n")
 
   while len(tokenizer.apply_chat_template(messages)) > MAX_TOKEN_COUNT:
     del messages[1]

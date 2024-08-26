@@ -35,6 +35,6 @@ def retrieve_memories(query, quantity):
 
 def add_memory(text):
   entry = [ { "vector": model.encode(text), "time": time.time(), "text": text} ]
-  print(f"Adding memory: {entry[0]['text']}")
+  # print(f"Adding memory: {entry[0]['text']}")
   tbl.add(entry)
   return

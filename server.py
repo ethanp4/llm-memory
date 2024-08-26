@@ -1,11 +1,15 @@
 from flask import Flask, request, jsonify, render_template
+from flask_cors import CORS
 from model import generate_reply
 from memory import retrieve_memories, add_memory
-import threading, logging
+import threading, logging, os
+
+PORT = os.environ['PORT']
+stream = { "status": "idle", "text": "" }
 
 app = Flask(__name__, template_folder="web", static_folder="web/static")
-
-stream = { "status": "idle", "text": "" }
+cors = CORS(app)#, resources={r'*': {'origins': 'http://localhost'}}
+# app.config['CORS_HEADERS'] = 
 
 @app.route('/')
 def serve_chat():
@@ -53,4 +57,4 @@ def post_stream():
 logging.getLogger('werkzeug').disabled = True
 
 if __name__ == '__main__':
-  app.run()
+  app.run(host='0.0.0.0', port=PORT)

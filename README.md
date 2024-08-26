@@ -1,6 +1,9 @@
 # simplechat
 Really basic llm chat interface with long term memory using lancedb
 
+## Docker image
+docker run -p 5000:5000 --gpus all -it docker.io/ethanp4/simplechat
+
 ## Requirements
 [Unsloth](https://github.com/unslothai/unsloth/tree/main?tab=readme-ov-file#-installation-instructions) or *transformers
 <br>flask
