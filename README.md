@@ -12,7 +12,7 @@ LLM interface capable of creating and retrieving "long term memories" by summari
 
 # Usage
 ## Docker
-requires nvidia-container-toolkit
+requires nvidia-container-toolkit on linux
 ```bash
 docker pull ghcr.io/ethanp4/simplechat:main
 docker run -p 5000:5000 --gpus all -it ghcr.io/ethanp4/simplechat:main
