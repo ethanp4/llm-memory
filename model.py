@@ -45,7 +45,7 @@ def create_memory_summary():
     })
   temp_messages.append({
     "role": "SYSTEM",
-    "content": "Summarise the previous conversation in first person for your memory. Don't preface it with 'this is a summary' or add any unnecessary context"
+    "content": "Summarise the previous conversation in first person for your memory. Don't preface it with 'this is a summary' or add unnecessary context"
   })
   print(f"Context for summary:\n{temp_messages}")
   inputs = tokenizer.apply_chat_template(temp_messages, add_generation_prompt=True, return_tensors="pt").to("cuda")
