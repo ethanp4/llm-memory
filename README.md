@@ -1,7 +1,17 @@
 # simplechat
 LLM interface capable of creating and retrieving "long term memories" by summarizing a number of recent chat messages. The memory and a 384-dim vector is added to the vectordb which is later queried with a number of previous messages (default: 4). Vectors are created by a smaller secondary transformer model
 
-## Docker usage
+## Screenshots
+### Console
+#### After generating a memory
+![Screenshot from 2024-08-25 20-51-48](https://github.com/user-attachments/assets/07c2fce6-7f37-4747-be19-bf94dd7c1182)
+#### System context
+![Screenshot from 2024-08-25 20-40-05](https://github.com/user-attachments/assets/165a3f91-15c0-42a0-8460-540361b2e269)
+### Website
+![image](https://github.com/user-attachments/assets/d96a8a06-ce3e-42d3-a6eb-74a7b8f1b0a7)
+
+# Usage
+## Docker
 requires nvidia-container-toolkit
 ```bash
 docker pull ghcr.io/ethanp4/simplechat:main
@@ -34,6 +44,8 @@ model = AutoModelForCausalLM.from_pretrained(model_name, quantization_config=bnb
 <br>/generate POST
 <br>/memories GET POST
 <br>/stream GET POST
+
+
 
 ## Models used
 Primary model: [Llama 3 8b](https://huggingface.co/unsloth/Meta-Llama-3.1-8B-Instruct-bnb-4bit)
