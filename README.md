@@ -1,4 +1,4 @@
-# simplechat
+# llm-memory
 LLM interface capable of creating and retrieving "long term memories" by summarizing a number of recent chat messages. The memory and a 384-dim vector is added to the vectordb which is later queried with a vector generated from a number of previous messages (default: 4). Vectors are created by a smaller secondary transformer model
 
 ## Screenshots
