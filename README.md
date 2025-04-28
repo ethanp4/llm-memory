@@ -14,8 +14,8 @@ LLM interface capable of creating and retrieving "long term memories" by summari
 ## Docker
 requires nvidia-container-toolkit on linux
 ```bash
-docker pull ghcr.io/ethanp4/simplechat:main
-docker run -p 5000:5000 --gpus all -it ghcr.io/ethanp4/simplechat:main
+docker pull ghcr.io/ethanp4/llm-memory:main
+docker run -p 5000:5000 --gpus all -it ghcr.io/ethanp4/llm-memory:main
 ```
 
 ## Non-docker
@@ -49,4 +49,4 @@ model = AutoModelForCausalLM.from_pretrained(model_name, quantization_config=bnb
 
 ## Models used
 Primary model: [Llama 3 8b](https://huggingface.co/unsloth/Meta-Llama-3.1-8B-Instruct-bnb-4bit)
-<br>Secondary model: [all MiniLM L6 v2](https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2)
+<br>Sentence transformer model (for embeddings): [all MiniLM L6 v2](https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2)
